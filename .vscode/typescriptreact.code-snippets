@@ -2,7 +2,7 @@
   //#region  //*=========== React ===========
   "import React": {
     "prefix": "ir",
-    "body": ["import * as React from 'react';"]
+    "body": ["import React from 'react';"]
   },
   "React.useState": {
     "prefix": "us",
@@ -29,30 +29,32 @@
   "React Functional Component": {
     "prefix": "rc",
     "body": [
-      "import * as React from 'react';\n",
-      "export default function ${1:${TM_FILENAME_BASE}}() {",
+      "import React from 'react';\n",
+      "const ${1:${TM_FILENAME_BASE}} = () => {",
       "  return (",
       "    <div>",
-      "      $0",
+      "      ${1:${TM_FILENAME_BASE}}",
       "    </div>",
       "  )",
-      "}"
+      "}",
+      "export default ${1:${TM_FILENAME_BASE}};"
     ]
   },
   "React Functional Component with Props": {
     "prefix": "rcp",
     "body": [
-      "import * as React from 'react';\n",
+      "import React from 'react';\n",
       "import clsxm from '@/lib/clsxm';\n",
       "type ${1:${TM_FILENAME_BASE}}Props= {\n",
       "} & React.ComponentPropsWithoutRef<'div'>\n",
-      "export default function ${1:${TM_FILENAME_BASE}}({className, ...rest}: ${1:${TM_FILENAME_BASE}}Props) {",
+      "const ${1:${TM_FILENAME_BASE}}:React.FC<${1:${TM_FILENAME_BASE}}Props> = ({className, ...rest}) => {",
       "  return (",
       "    <div className={clsxm(['', className])} {...rest}>",
-      "      $0",
+      "      ${1:${TM_FILENAME_BASE}}",
       "    </div>",
       "  )",
-      "}"
+      "}",
+      "export default ${1:${TM_FILENAME_BASE}};"
     ]
   },
   //#endregion  //*======== React ===========
@@ -82,23 +84,19 @@
   "Next Pages": {
     "prefix": "np",
     "body": [
-      "import * as React from 'react';\n",
+      "import { NextPage } from 'next';\n",
+      "import React from 'react';\n",
       "import Layout from '@/components/layout/Layout';",
-      "import Seo from '@/components/Seo';\n",
-      "export default function ${1:${TM_FILENAME_BASE/(^[a-zA-Z])(.*)/${1:/upcase}${2}/}}Page() {",
+      "const ${1:${TM_FILENAME_BASE/(^[a-zA-Z])(.*)/${1:/upcase}${2}/}}Page:NextPage = () => {",
       "  return (",
       "    <Layout>",
-      "      <Seo templateTitle='${1:${TM_FILENAME_BASE/(^[a-zA-Z])(.*)/${1:/upcase}${2}/}}' />\n",
-      "      <main>\n",
-      "        <section className=''>",
-      "          <div className='layout py-20 min-h-screen'>",
-      "            $0",
-      "          </div>",
-      "        </section>",
-      "      </main>",
+      "      <div>",
+      "      ${1:${TM_FILENAME_BASE/(^[a-zA-Z])(.*)/${1:/upcase}${2}/}}Page",
+      "      </div>",
       "    </Layout>",
       "  )",
-      "}"
+      "}",
+      "export default ${1:${TM_FILENAME_BASE/(^[a-zA-Z])(.*)/${1:/upcase}${2}/}}Page;"
     ]
   },
   "Next API": {
