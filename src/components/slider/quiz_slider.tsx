@@ -53,7 +53,7 @@ export default function QuizSlider() {
             );
           })}
       </Swiper>
-      <div className='mt-5 flex items-center space-x-2 text-[1.25rem]'>
+      <div className='my-5 flex items-center space-x-2 text-[1.25rem]'>
         <button
           onClick={() => {
             if (swiperRef.current) {
