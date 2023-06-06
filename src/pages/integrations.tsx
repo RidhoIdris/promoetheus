@@ -5,7 +5,7 @@ import Layout from '@/components/layout/Layout';
 const IntegrationsPage: NextPage = () => {
   return (
     <Layout>
-      <div className='text-3xl font-semibold'>IntegrationsPage</div>
+      <div className='text-3xl'>Integrations Page</div>
     </Layout>
   );
 };

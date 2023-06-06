@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FiMenu } from 'react-icons/fi';
 
 import clsxm from '@/lib/clsxm';
 
@@ -7,13 +8,18 @@ import Sidebar from '@/components/layout/Sidebar';
 type LayoutProps = React.ComponentPropsWithoutRef<'div'>;
 
 const Layout: React.FC<LayoutProps> = ({ className, children, ...rest }) => {
+  const [menu, setMenu] = useState(false);
   return (
-    <div
-      className={clsxm(['flex h-screen overflow-hidden', className])}
-      {...rest}
-    >
-      <Sidebar />
-      <div className='min-h-screen flex-1 overflow-y-auto p-12'>{children}</div>
+    <div className='flex w-full' {...rest}>
+      <Sidebar menu={menu} setMenu={(e) => setMenu(e)} />
+      <div className='max-h-screen w-full overflow-y-auto'>
+        <div className='w-full p-5 lg:hidden lg:p-12'>
+          <div className='w-fit cursor-pointer text-[1.5rem]'>
+            <FiMenu onClick={() => setMenu(true)} />
+          </div>
+        </div>
+        <div className={clsxm('p-5 lg:py-12', className)}>{children}</div>
+      </div>
     </div>
   );
 };

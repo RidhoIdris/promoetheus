@@ -5,7 +5,7 @@ import Layout from '@/components/layout/Layout';
 const FeedbackPage: NextPage = () => {
   return (
     <Layout>
-      <div className='text-3xl font-semibold'>FeedbackPage</div>
+      <div className='text-3xl'>Feedback Page</div>
     </Layout>
   );
 };

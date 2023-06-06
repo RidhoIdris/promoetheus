@@ -5,7 +5,7 @@ import Layout from '@/components/layout/Layout';
 const TemplatePage: NextPage = () => {
   return (
     <Layout>
-      <div className='text-3xl font-semibold'>TemplatePage</div>
+      <div className='text-3xl'>Template Page</div>
     </Layout>
   );
 };
