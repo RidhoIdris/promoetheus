@@ -146,7 +146,7 @@ function CreateQuiz({ popupHide, setPopupHide }: popup) {
           </div>
         )}
         {currentTab === 2 && (
-          <div className='mt-5 flex w-1/2 flex-col space-y-5'>
+          <div className='mt-5 flex flex-col space-y-5 lg:w-1/2'>
             <div className='font-medium'>Audience</div>
             <Select
               data={[
