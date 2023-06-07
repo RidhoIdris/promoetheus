@@ -64,7 +64,6 @@ type SidebarProps = {
 
 const Sidebar: React.FC<SidebarProps> = ({ menu, setMenu }) => {
   const router = useRouter();
-  // const [menu, setMenu] = useState(false);
 
   return (
     <div

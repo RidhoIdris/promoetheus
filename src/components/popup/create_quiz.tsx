@@ -1,5 +1,8 @@
+import Link from 'next/link';
 import React, { Dispatch, SetStateAction, useState } from 'react';
 import { FiX } from 'react-icons/fi';
+
+import { Slider } from '@/components/ui/slider';
 
 import Select from '../ui/select';
 
@@ -143,7 +146,7 @@ function CreateQuiz({ popupHide, setPopupHide }: popup) {
           </div>
         )}
         {currentTab === 2 && (
-          <div className='mt-5 flex flex-col space-y-5'>
+          <div className='mt-5 flex w-1/2 flex-col space-y-5'>
             <div className='font-medium'>Audience</div>
             <Select
               data={[
@@ -182,23 +185,33 @@ function CreateQuiz({ popupHide, setPopupHide }: popup) {
               })}
             </div>
             <div className='font-medium'>Nombre de questions</div>
-            <input
+            {/* <input
               className='rounded-md border bg-white p-3'
               placeholder='Number of Questions'
-            />
+            /> */}
+            {/* <input
+              id='disabled-range'
+              type='range'
+              value={5}
+              min={1}
+              max={10}
+              className='h-2 w-full cursor-pointer appearance-none rounded-lg bg-blue-500'
+            /> */}
+            <Slider />
+
             <div className='font-medium'>Nombre de Choix</div>
-            <input
-              className='rounded-md border bg-white p-3'
-              placeholder='Number of Questions'
-            />
+            <Slider />
             <div className='font-medium'>Nombre de Quiz</div>
             <input
               className='rounded-md border bg-white p-3'
               placeholder='Number of Questions'
             />
-            <button className='bg-primary rounded-md p-3 text-white'>
+            <Link
+              href='/quiz/detail'
+              className='bg-primary rounded-md p-3 text-center text-white'
+            >
               Créer le Quiz
-            </button>
+            </Link>
           </div>
         )}
       </div>
