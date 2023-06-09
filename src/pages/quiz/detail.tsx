@@ -73,11 +73,11 @@ const QuizDetailPage: NextPage = () => {
     if (e.target.id === 'options' && order !== undefined) {
       setQuiz((prevState) => {
         const updatedQuiz = [...prevState];
-        updatedQuiz[index].options[order] = e.target.textContent;
+        updatedQuiz[index].options[order] = e.target.value;
         return [...updatedQuiz];
       });
       setAnswers((prevState) => {
-        prevState[index] = e.target.textContent;
+        prevState[index] = e.target.value;
         return [...prevState];
       });
     } else {
@@ -85,7 +85,7 @@ const QuizDetailPage: NextPage = () => {
         const updatedQuiz = [...prevState];
         updatedQuiz[index] = {
           ...prevState[index],
-          [e.target.id]: e.target.textContent,
+          [e.target.id]: e.target.value,
         };
         return updatedQuiz;
       });
@@ -95,11 +95,16 @@ const QuizDetailPage: NextPage = () => {
   function handleOnDragEnd(result: DropResult) {
     if (!result.destination) return;
 
-    const items = Array.from(quiz);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
+    const newQuizOrder = Array.from(quiz);
+    const [reorderedItem] = newQuizOrder.splice(result.source.index, 1);
+    newQuizOrder.splice(result.destination.index, 0, reorderedItem);
 
-    setQuiz(items);
+    const newAnswersOrder = Array.from(answers);
+    const [reorderedAnswer] = newAnswersOrder.splice(result.source.index, 1);
+    newAnswersOrder.splice(result.destination.index, 0, reorderedAnswer);
+
+    setQuiz(newQuizOrder);
+    setAnswers(newAnswersOrder);
   }
 
   return (
@@ -173,14 +178,12 @@ const QuizDetailPage: NextPage = () => {
                                 <div className='flex justify-between space-x-2'>
                                   <div className='flex w-full space-x-2'>
                                     <div>{index + 1}.</div>
-                                    <div
-                                      contentEditable
+                                    <input
                                       className='w-full outline-none'
                                       id='question'
                                       onChange={(e) => inputHandler(index, e)}
-                                    >
-                                      {x.question}
-                                    </div>
+                                      value={x.question}
+                                    />
                                   </div>
                                   <FiXCircle
                                     className='text-[1.25rem]'
@@ -212,16 +215,14 @@ const QuizDetailPage: NextPage = () => {
                                                 : 'bg-gray-200'
                                             }`}
                                           ></div>
-                                          <div
-                                            contentEditable
+                                          <input
                                             id='options'
                                             onChange={(e) =>
                                               inputHandler(index, e, order)
                                             }
                                             className='w-full font-light outline-none'
-                                          >
-                                            {option}
-                                          </div>
+                                            value={option}
+                                          />
                                         </div>
                                       </div>
                                     );
@@ -242,27 +243,23 @@ const QuizDetailPage: NextPage = () => {
                                     <span className='font-medium'>
                                       Explanation:
                                     </span>{' '}
-                                    <div
-                                      contentEditable
+                                    <input
                                       id='explanation'
                                       onChange={(e) => inputHandler(index, e)}
                                       className='w-full outline-none'
-                                    >
-                                      {x.explanation}
-                                    </div>
+                                      value={x.explanation}
+                                    />
                                   </div>
                                   <div className='mt-5 flex flex-col xl:mt-0 xl:flex-row xl:space-x-2'>
                                     <span className='font-medium md:whitespace-nowrap'>
                                       Quote from provided content:
                                     </span>
-                                    <div
+                                    <input
                                       id='quote'
-                                      contentEditable
                                       onChange={(e) => inputHandler(index, e)}
                                       className='w-full outline-none'
-                                    >
-                                      {x.quote}
-                                    </div>
+                                      value={x.quote}
+                                    />
                                   </div>
                                 </div>
                               </div>
