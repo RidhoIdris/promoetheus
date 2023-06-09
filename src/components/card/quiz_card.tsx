@@ -8,7 +8,7 @@ interface quiz {
   progressWidth?: string | number;
 }
 
-function QuizCard({ label, file, questions, progress, progressWidth }: quiz) {
+function QuizCard({ label, file, questions }: quiz) {
   const router = useRouter();
   return (
     <div

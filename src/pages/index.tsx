@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import React from 'react';
 
 import Layout from '@/components/layout/Layout';
-import QuizSlider from '@/components/slider/quiz_slider';
+// import QuizSlider from '@/components/slider/quiz_slider';
 const HomePage: NextPage = () => {
   return (
     <Layout className='lg:pr-0'>

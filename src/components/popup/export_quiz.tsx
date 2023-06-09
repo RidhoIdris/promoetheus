@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { Dispatch, SetStateAction, useState } from 'react';
 import { FiX } from 'react-icons/fi';
 

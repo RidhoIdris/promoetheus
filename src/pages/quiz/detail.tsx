@@ -1,19 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 'use client';
 
 import { GetServerSideProps, NextPage } from 'next';
-import { ChangeEvent, FormEvent, useState } from 'react';
-import { FiXCircle } from 'react-icons/fi';
-
-import Layout from '@/components/layout/Layout';
+import { useState } from 'react';
 import {
   DragDropContext,
   Draggable,
-  DropResult,
   Droppable,
+  DropResult,
   resetServerContext,
 } from 'react-beautiful-dnd';
-import ExportQuiz from '@/components/popup/export_quiz';
+import { FiXCircle } from 'react-icons/fi';
+
+import Layout from '@/components/layout/Layout';
 import DeleteQuiz from '@/components/popup/delete_quiz';
+import ExportQuiz from '@/components/popup/export_quiz';
 
 const QuizDetailPage: NextPage = () => {
   const [quiz, setQuiz] = useState(quizData);
@@ -271,7 +272,7 @@ const quizData = [
   },
 ];
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   resetServerContext(); // <-- CALL RESET SERVER CONTEXT, SERVER SIDE
   return { props: { data: [] } };
 };
