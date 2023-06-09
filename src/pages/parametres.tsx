@@ -44,7 +44,7 @@ const ParametresPage: NextPage = () => {
     () => tab.forEach((x) => x.removeEventListener('click', handleClick));
   }, [currentTab]);
   return (
-    <Layout>
+    <Layout className='bg-white'>
       <div className='text-[1.5rem] font-medium md:text-[2rem]'>Paramètres</div>
       <div className='relative mt-5 flex items-center overflow-x-auto border-b'>
         <span
