@@ -11,6 +11,7 @@ import {
   resetServerContext,
 } from 'react-beautiful-dnd';
 import { FiXCircle } from 'react-icons/fi';
+import { GrDrag } from 'react-icons/gr';
 
 import Layout from '@/components/layout/Layout';
 import DeleteQuiz from '@/components/popup/delete_quiz';
@@ -27,6 +28,8 @@ const QuizDetailPage: NextPage = () => {
   const [showExplanation, setShowExplanation] = useState(true);
   const [exportModal, setExportModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
+
+  const [isGrDragIconHovered, setIsGrDragIconHovered] = useState(false);
 
   const inputHandler = (index: number, e: any, order?: number) => {
     if (e.target.id === 'options' && order !== undefined) {
@@ -66,7 +69,7 @@ const QuizDetailPage: NextPage = () => {
       <ExportQuiz exportModal={exportModal} setExportModal={setExportModal} />
       <DeleteQuiz deleteModal={deleteModal} setDeleteModal={setDeleteModal} />
       <Layout>
-        <div className='mx-auto lg:max-w-[75%]'>
+        <div className='mx-auto xl:max-w-3xl'>
           <div className='flex flex-col justify-between md:flex-row md:items-center'>
             <div>Quiz : Histoire Geo</div>
             <div className='mt-5 flex items-center space-x-2 text-white md:mt-0'>
@@ -111,14 +114,24 @@ const QuizDetailPage: NextPage = () => {
                             key={`draggable-${index}`}
                             draggableId={`draggable-${index}`}
                             index={index}
+                            isDragDisabled={!isGrDragIconHovered}
                           >
                             {(provided2) => (
                               <li
                                 ref={provided2.innerRef}
                                 {...provided2.draggableProps}
                                 {...provided2.dragHandleProps}
-                                className='mb-12'
+                                className='relative mb-12'
                               >
+                                <GrDrag
+                                  onMouseEnter={() =>
+                                    setIsGrDragIconHovered(true)
+                                  }
+                                  onMouseLeave={() =>
+                                    setIsGrDragIconHovered(false)
+                                  }
+                                  className='left-[-5%] top-[2.5%] z-[99] mb-5 text-[1.5rem] xl:absolute xl:mb-0'
+                                />
                                 <div className='rounded-md border bg-white p-5 drop-shadow-md'>
                                   <div className='flex justify-between space-x-2'>
                                     <div className='flex w-full space-x-2'>

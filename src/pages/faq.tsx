@@ -7,7 +7,7 @@ import Layout from '@/components/layout/Layout';
 const FaqPage: NextPage = () => {
   return (
     <Layout>
-      <div className='mx-auto lg:max-w-[75%]'>
+      <div className='mx-auto xl:max-w-3xl'>
         <div className='text-[1.5rem] font-medium md:text-[2rem]'>
           Questions Fréquemment Posées
         </div>
